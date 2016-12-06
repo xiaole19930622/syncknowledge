@@ -1,17 +1,19 @@
 package com.xuebang.o2o.business.entity;
 
-import com.xuebang.o2o.core.repository.entity.LongIdEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.xuebang.o2o.core.repository.entity.TreeIdEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/7/26.
  */
 @Entity
-public class Knowledge extends LongIdEntity{
+public class Knowledge extends TreeIdEntity<Knowledge>{
 
     private String name;
 
@@ -29,6 +31,7 @@ public class Knowledge extends LongIdEntity{
 
     private Integer isLeaf; //是否叶子节点 0 不是  1是
 
+    private List<Knowledge> children;
 
 
     public String getName() {
@@ -69,6 +72,17 @@ public class Knowledge extends LongIdEntity{
         return parent;
     }
 
+    @Override
+    @JsonIgnore
+    @OneToMany(mappedBy = "parent")
+    public List<Knowledge> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Knowledge> children) {
+        this.children = children;
+    }
+
     public void setParent(Knowledge parent) {
         this.parent = parent;
     }
@@ -91,8 +105,8 @@ public class Knowledge extends LongIdEntity{
                 '}';
     }
 
-    public Integer getSort() {
-        return sort;
+    public int getSort() {
+        return sort == null ? 0 : sort.intValue();
     }
 
     public void setSort(Integer sort) {

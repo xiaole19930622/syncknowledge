@@ -19,9 +19,9 @@ public class SysnKnowledge extends TreeIdEntity<SysnKnowledge>{
 
     private String name;
 
-    private String section;//学段
+    private String sectionId;//学段
 
-    private String subject;
+    private String subjectId;
 
     private SysnKnowledge parent;
 
@@ -37,7 +37,7 @@ public class SysnKnowledge extends TreeIdEntity<SysnKnowledge>{
     private String  knowNumber;//专题知识点序号
 
 
-    private Knowledge knowledge;//专题知识点id
+    private Knowledge knowledge;//专题知识点iddd
 
     private Integer sort;
 
@@ -51,21 +51,20 @@ public class SysnKnowledge extends TreeIdEntity<SysnKnowledge>{
         this.name = name;
     }
 
-    public String getSection() {
-        return section;
+    public String getSectionId() {
+        return sectionId;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
     }
 
-
-    public String getSubject() {
-        return subject;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
     @ManyToOne

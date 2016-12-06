@@ -315,9 +315,9 @@ public class CheckKnowledgeServiceImpl implements CheckKnowledgeService {
 
     private int registerSyncKnowledge(Sheet sheet, SyncKnowBaseInfo syncKnowBaseInfo, Row row, int flagNumer, SysnKnowledge sysnKnowledge, int j ,Map<String , List >  allKnows) {
         if (j == syncKnowBaseInfo.getSection()) { /**列号  == 学段*/
-            sysnKnowledge.setSection( cellValue( row , j ));
+            sysnKnowledge.setSectionId( cellValue( row , j ));
         } else if (j == syncKnowBaseInfo.getSubject()) {/**列号 == 学科*/
-            sysnKnowledge.setSubject( cellValue( row , j) );
+            sysnKnowledge.setSubjectId( cellValue( row , j) );
         } else if (j == syncKnowBaseInfo.getBookVersion()) {/**列号 == 书本*/
             sysnKnowledge.setBookVersion( cellValue( row , j) );
         }else if (j == syncKnowBaseInfo.getPublishVersion()) {/**列号 == 教材版本*/
