@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 public class TreeIdGenerator implements IdentifierGenerator {
 
-    private static int everyLevelIdLength = 3;
+    private static int everyLevelIdLength = 5;
 
     @Override
     public Serializable generate(SessionImplementor sessionImplementor, Object o) throws HibernateException {
