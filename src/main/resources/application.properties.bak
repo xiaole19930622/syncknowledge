@@ -21,6 +21,18 @@ spring.datasource.password:root
 spring.view.prefix= /view/
 spring.view.suffix= .html
 
+#xuebangsoft.sso.remote.url= http://192.168.0.110:8080/cas
+#xuebangsoft.sso.local.url= http://192.168.0.110:8081/o2o/shiro-cas
+
+
+spring.datasource.sync.url:jdbc:mysql://120.24.83.211:3308/eduboss_xinghuo?autoReconnect=true
+spring.datasource.sync.driverClassName:com.mysql.jdbc.Driver
+spring.datasource.sync.username:xh_ro
+spring.datasource.sync.password:mhETwf0i805qVTrB0eTk
+spring.datasource.validation-query=select 1 from dual
+
+multipart.maxFileSize=2048Mb
+multipart.maxRequestSize=2048Mb
 
 
 
