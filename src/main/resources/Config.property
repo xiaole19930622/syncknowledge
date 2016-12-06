@@ -1,0 +1,9 @@
+sourcefilePath D:\tmp
+targetfilePath D:\target
+threadCount 1
+fileCount 1000
+suffixName html
+startPage 0
+endPage 1
+zoom 1.0f
+isGaoqing false

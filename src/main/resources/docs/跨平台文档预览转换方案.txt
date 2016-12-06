@@ -1,0 +1,43 @@
+【整理思路】
+1.将office相关文档使用LibreOffice服务（用jodconverter链接）打印成pdf
+2.用swftools将pdf转换成flash
+3.用flexPaper组件在页面分页显示转换后的flash
+
+【相关问题】
+1.LibreOffice不支持wps后缀，但是可以强制改后缀为doc，LibreOffice是可以正常打开该格式的文件的
+2.jodconverter默认以8100端口打开LibreOffice服务，可以设置多端口打开多个LibreOffice进程，jodconverter默认支持多线程调用
+3.批量转换时有未转换文件的预览需求需要提前转换的，可以考虑自行实现支持插队的双向队列作为待转换文件的容器
+
+【office文件转换Java代码参考】
+// 下列代码中start()和stop()建议在程序启动和注销时调用
+OfficeManager officeManager = new DefaultOfficeManagerConfiguration()
+                              .setPortNumbers(new int[]{2001,2002,2003,2004,2005})
+                              .buildOfficeManager();
+OfficeDocumentConverter converter = new OfficeDocumentConverter(officeManager);
+officeManager.start();
+converter.convert(inputFile, pdfFile);
+officeManager.stop();
+
+【依赖软件】
+LibreOffice     http://zh-cn.libreoffice.org/（笔者用的5.0.2）
+swftools        http://www.swftools.org/download.html（笔者用的0.9.1）
+jodconverter    https://github.com/nuxeo/jodconverter（笔者用的3.0-NX，自行在源代码中添加了LibreOffice5的安装位置，调用时配置officeHome也可）
+FlexPaper       http://flexpaper.devaldi.com/（可自行选择版本）
+
+【linux下转换可能需要安装所需字体】
+先把需要的字体文件或文件夹copy到/usr/share/fonts/下（windows下字体文件夹C:\Windows\Fonts）
+#~  cd /usr/share/fonts
+#~  sudo mkfontscale
+#~  sudo mkfontdir
+#~  sudo fc-cache -fv
+
+【linux下安装swftools】
+需要安装依赖包 yum -y install gcc zlib* freetype jpeglib* ungif* jpeglib.h* freetype* gif_lib.h* jpeg* jpeg-devel libjpeg-devel g++ gcc++ gcc*
+#~  tar -zxvf swftools-0.9.1.tar.gz
+#~  cd swftools-0.9.1
+#~  ./configure
+#~  make
+#~  make install
+#~  make clean
+#~  make distclean
+#~  whereis pdf2swf
