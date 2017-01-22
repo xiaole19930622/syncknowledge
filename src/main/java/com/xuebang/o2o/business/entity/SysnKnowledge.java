@@ -37,7 +37,7 @@ public class SysnKnowledge extends TreeIdEntity<SysnKnowledge>{
     private String  knowNumber;//专题知识点序号
 
 
-    private Knowledge knowledge;//专题知识点iddd
+    private Knowledge knowledge;//专题知识点id
 
     private Integer sort;
 

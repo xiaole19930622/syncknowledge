@@ -3,10 +3,7 @@ package com.xuebang.o2o.business.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.xuebang.o2o.core.repository.entity.TreeIdEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -17,15 +14,14 @@ public class Knowledge extends TreeIdEntity<Knowledge>{
 
     private String name;
 
-    private String section;//学段
+    private String sectionId;//学段
 
     private String number;
 
-    private String subject;
+    private String subjectId;
 
     private Knowledge parent;
 
-    private Long parentId;
 
     private Integer sort;
 
@@ -42,12 +38,20 @@ public class Knowledge extends TreeIdEntity<Knowledge>{
         this.name = name;
     }
 
-    public String getSection() {
-        return section;
+    public String getSectionId() {
+        return sectionId;
     }
 
-    public void setSection(String section) {
-        this.section = section;
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public String getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 
     public String getNumber() {
@@ -58,13 +62,6 @@ public class Knowledge extends TreeIdEntity<Knowledge>{
         this.number = number;
     }
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
 
     @ManyToOne
     @JoinColumn
@@ -85,14 +82,6 @@ public class Knowledge extends TreeIdEntity<Knowledge>{
 
     public void setParent(Knowledge parent) {
         this.parent = parent;
-    }
-
-    public Long getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
     }
 
 

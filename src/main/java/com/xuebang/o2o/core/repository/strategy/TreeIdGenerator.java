@@ -60,10 +60,10 @@ public class TreeIdGenerator implements IdentifierGenerator {
                 }
                 // 获取最大值 + 1
                 Object result = sessionImplementor.createSQLQuery(builder.createNamedQueryDefinition()).uniqueResult();
-                SysnKnowledge sync = (SysnKnowledge) o;
-                if("第22章：二次函数".equals(sync.getName())){
-                    System.out.printf("1");
-                }
+//                SysnKnowledge sync = (SysnKnowledge) o;
+//                if("第22章：二次函数".equals(sync.getName())){
+//                    System.out.printf("1");
+//                }
                 int nextId = 0;
                 if(result == null){
                     nextId = 1;
